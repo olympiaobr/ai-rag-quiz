@@ -1,15 +1,10 @@
-from openai import OpenAI
-from solution.rag import QuestionAnsweringRAG
+from rag import QuestionAnsweringRAG
 import streamlit as st
 
-st.title("Q&A RAG")
 
 rag = QuestionAnsweringRAG()
 
-client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
-
-if "openai_model" not in st.session_state:
-    st.session_state["openai_model"] = "gpt-3.5-turbo"
+st.title("Q&A RAG")
 
 if "messages" not in st.session_state:
     st.session_state.messages = []
@@ -24,13 +19,7 @@ if prompt := st.chat_input("What is up?"):
         st.markdown(prompt)
 
     with st.chat_message("assistant"):
-        stream = client.chat.completions.create(
-            model=st.session_state["openai_model"],
-            messages=[
-                {"role": m["role"], "content": m["content"]}
-                for m in st.session_state.messages
-            ],
-            stream=True,
-        )
-        response = st.write_stream(stream)
+        msg = st.session_state.messages[-1]["content"]
+        response = rag.call(msg)
+        st.write(response)
     st.session_state.messages.append({"role": "assistant", "content": response})

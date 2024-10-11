@@ -1,4 +1,4 @@
-from solution.embedding import EmbeddingModel
+from .embedding import EmbeddingModel
 
 
 def main():

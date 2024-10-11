@@ -1,6 +1,9 @@
+from llm import MistralModel
+
+
 class QuestionAnsweringRAG:
 
-    def __init__(self, llm, embedding_model, dataset):
+    def __init__(self):
         pass
 
     def _create_prompt(self, context, message):
@@ -9,3 +12,7 @@ class QuestionAnsweringRAG:
         Context: {context}
         
         User Question: {message}"""
+
+    def call(self, query):
+        model = MistralModel()
+        return model.call(query)
