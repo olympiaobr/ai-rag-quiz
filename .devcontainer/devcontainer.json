@@ -4,7 +4,10 @@
 		"ghcr.io/devcontainers/features/git:1": {},
         "ghcr.io/devcontainers/features/docker-in-docker:2": {}
 	},
-	"containerEnv": {},
+	"postCreateCommand": "${containerWorkspaceFolder}/.devcontainer/install.sh",
+	"containerEnv": {
+		"MISTRAL_API_KEY": "${localEnv:MISTRAL_API_KEY}"
+	},
 	"customizations":{
         "vscode": {
             "extensions":[
