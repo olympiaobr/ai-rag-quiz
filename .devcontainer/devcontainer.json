@@ -6,7 +6,8 @@
 	},
 	"postCreateCommand": "${containerWorkspaceFolder}/.devcontainer/install.sh",
 	"containerEnv": {
-		"MISTRAL_API_KEY": "${localEnv:MISTRAL_API_KEY}"
+		"MISTRAL_API_KEY": "${localEnv:MISTRAL_API_KEY}",
+		"SENTENCE_TRANSFORMERS_HOME": "${containerWorkspaceFolder}/data/embedding_model"
 	},
 	"customizations":{
         "vscode": {

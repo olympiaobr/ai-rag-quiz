@@ -20,3 +20,16 @@ Here's what you'll find in this repository:
 ## Getting Started
 Ready to dive in? Check out this video tutorial for instructions on how to get started! 👇
 - (Link to video)
+
+
+## TODOs
+[] Prepare notebooks
+    [] Prompting notebook
+    [] RAG Notebook
+[] Prepare Chat Boilerplate
+[] Prepare video to get started
+    [] How to fork
+    [] How to setup MistralAI token (create account, add phone number, create token, add to GH secrets)
+    [] How to start codespaces
+    [] How to use notebooks in VS Code
+[] Add images of final solution to repo
