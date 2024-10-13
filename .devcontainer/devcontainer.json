@@ -4,10 +4,11 @@
 		"ghcr.io/devcontainers/features/git:1": {},
         "ghcr.io/devcontainers/features/docker-in-docker:2": {}
 	},
-	"postCreateCommand": "${containerWorkspaceFolder}/.devcontainer/install.sh",
+	"postCreateCommand": "${containerWorkspaceFolder}/.devcontainer/setup.sh",
 	"containerEnv": {
 		"MISTRAL_API_KEY": "${localEnv:MISTRAL_API_KEY}",
-		"SENTENCE_TRANSFORMERS_HOME": "${containerWorkspaceFolder}/data/embedding_model"
+		"SENTENCE_TRANSFORMERS_HOME": "${containerWorkspaceFolder}/data/embedding_model",
+		"EMBEDDING_DB_HOME": "${containerWorkspaceFolder}/data/embedding_db.pkl"
 	},
 	"customizations":{
         "vscode": {
@@ -19,7 +20,10 @@
 				"ms-toolsai.jupyter-keymap",
 				"ms-toolsai.jupyter-renderers",
 				"ms-toolsai.vscode-jupyter-slideshow"
-			]
+			],
+			"settings": {
+				"python.defaultInterpreterPath": "${containerWorkspaceFolder}/.venv/bin/python"
+			}
         }
     }
 }

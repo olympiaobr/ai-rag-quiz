@@ -2,7 +2,7 @@ import os
 from mistralai import Mistral
 
 
-class MistralModel(object):
+class LargeLanguageModel(object):
 
     def __init__(self, model="mistral-small-latest"):
         self.model = model
@@ -27,5 +27,5 @@ class MistralModel(object):
 
 
 if __name__ == "__main__":
-    model = MistralModel()
+    model = LargeLanguageModel()
     print(model.call("Who is the president of Germany"))

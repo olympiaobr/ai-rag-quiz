@@ -5,7 +5,7 @@ To run the solution, navigate to the root of the project and execute the followi
 
 ```bash
 cd solution
-python create_dataset.py
+python create_db.py
 streamlit run main.py
 ```
 

@@ -1,4 +1,6 @@
+.DS_Store
 embedding_model/
+embedding_db.pkl
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
