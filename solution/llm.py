@@ -3,7 +3,6 @@ from mistralai import Mistral
 
 
 class LargeLanguageModel(object):
-
     def __init__(self, model="mistral-small-latest"):
         self.model = model
         api_key = os.environ.get("MISTRAL_API_KEY", None)

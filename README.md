@@ -28,7 +28,7 @@ Ready to dive in? Check out this video tutorial for instructions on how to get s
 
 
 ## Credits
-- Full book can be bought on [Amazon](https://www.amazon.de/-/en/J-Kenji-Lopez-Alt/dp/0393081087)
+This workshop uses a single chapter from the book **The Food Lab: Better Home Cooking Through Science (2015, J. Kenji Lopez-Alt)**. The book can be purchased on [Amazon](https://www.amazon.de/-/en/J-Kenji-Lopez-Alt/dp/0393081087)
 
 
 ## Additional Resources for self educaton
