@@ -15,8 +15,8 @@ While the workshop focuses on books, the skills you'll gain are versatile and ap
 ## Project Structure
 Here's what you'll find in this repository:
 
-- 📓 notebooks: Step-by-step guides to get you up and running with RAG basics.
 - 📂 data: All the datasets you need to work through the exercises. You can also bring your own PDFs for a more personal touch!
+- 📓 notebooks: Step-by-step guides to get you up and running with RAG basics.
 - 💬 chat: The final chat application you'll build after completing the notebooks. 
 
 The final app could look like this:
@@ -35,15 +35,16 @@ Ready to dive in? Check out this video tutorial for instructions on how to get s
 
 
 ## TODOs
-[] Prepare notebooks
-    [] Walkthrough in loading PDF and using it for prompting
-    [] Walkthrough in embeddings and how to retrieve documents using cosine similairty
-[] Prepare Chat Boilerplate
-    [] Prepare code
-    [] Add todos in sections which are used in the notebooks
-[] Prepare video to get started
-    [] How to fork
-    [] How to setup MistralAI token (create account, add phone number, create token, add to GH secrets)
-    [] How to start codespaces
-    [] How to use notebooks in VS Code
-[x] Add images of final solution to repo
+
+- [ ] Prepare notebooks
+    - [ ] Walkthrough in loading PDF and using it for prompting
+    - [ ] Walkthrough in embeddings and how to retrieve documents using cosine similarity
+- [ ] Prepare Chat Boilerplate
+    - [ ] Prepare code
+    - [ ] Add todos in sections which are used in the notebooks
+- [ ] Prepare video to get started
+    - [ ] How to fork
+    - [ ] How to setup MistralAI token (create account, add phone number, create token, add to GH secrets)
+    - [ ] How to start codespaces
+    - [ ] How to use notebooks in VS Code
+- [x] Add images of final solution to repo
