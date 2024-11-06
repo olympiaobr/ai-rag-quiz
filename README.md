@@ -1,6 +1,6 @@
 # 🚀 RAG Workshop: Build Your Own AI-Powered Q&A App!
 Welcome to the RAG Workshop! This repository is your starting point to dive into the world of Retrieval-Augmented Generation (RAG). Whether you're curious about how RAG works, how to optimize it, or how to build cool AI-powered chat apps, you're in the right place!
-
+[Complete questions & answers](https://docs.google.com/document/d/18MjmZZP2Hz6ADVNY3J0ln7NmS68h6BwiBqGaBqmhRCY/edit?tab=t.0#heading=h.u53uzo3gvfws)
 
 ## What You'll Learn
 In this workshop, you'll:
