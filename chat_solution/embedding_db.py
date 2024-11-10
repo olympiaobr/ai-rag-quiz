@@ -14,9 +14,12 @@ class EmbeddingDatabase:
         self.embedding_model = embedding_model
         self.db = pd.DataFrame([], columns=["text", "text_embedding"])
 
-        state_file = os.getenv("EMBEDDING_DB_HOME")
-        if state_file and os.path.exists(state_file):
-            self.load_state(state_file)
+        self.state_file = os.getenv("EMBEDDING_DB_HOME") or "/tmp/embedding_db.pkl"
+        if os.path.exists(self.state_file):
+            print(f"Loading database from {self.state_file}")
+            self.load_state()
+        else:
+            print(f"No database found at {self.state_file}")
 
     def add_documents(self, documents: List[str]):
         """Add documents to the embedding database."""
@@ -52,18 +55,16 @@ class EmbeddingDatabase:
 
     def save_state(self):
         """Save the current state of the database to a file."""
-        state_file = os.getenv("EMBEDDING_DB_HOME")
-        if state_file:
-            with open(state_file, "wb") as f:
-                pickle.dump(self.db, f)
+        with open(self.state_file, "wb") as f:
+            pickle.dump(self.db, f)
+        print(f"Database saved to {self.state_file}")
 
-    def load_state(self, state_file: str):
+    def load_state(self):
         """Load the database state from a file."""
-        with open(state_file, "rb") as f:
+        with open(self.state_file, "rb") as f:
             self.db = pickle.load(f)
 
 
 if __name__ == "__main__":
-    model = EmbeddingModel()
-    db = EmbeddingDatabase(model)
-    print(db.retrieve("How do you pick a green?"))
+    import fire
+    fire.Fire(EmbeddingDatabase(EmbeddingModel()))
