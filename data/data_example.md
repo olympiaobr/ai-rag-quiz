@@ -1,12 +1,19 @@
-Note: before the workshop starts we will import the latest version of this doc to the chat
-Topics
-
-
 What are LLMs?
 
 Large Language Models (LLMs) are trained on massive datasets of text to predict and generate language based on given prompts, learning patterns, structures, and relationships in text to produce human-like responses.
 
 How do they work?
+
+What are the most known LLMs
+Gpt-X series developed by Open-AI, they are proprietary and very powerful
+Mistral Series: developed by Mistral AI, built by an eu company
+LLamma series: developed by Meta
+
+Closed source vs Open source LLMs
+
+Closed-source LLMs are proprietary, with code and models kept private, while open-source LLMs allow public access to the model architecture and often the training data, enabling more transparency and community-driven improvements.
+
+
 
 What is RAG?
 
@@ -16,10 +23,6 @@ Retrieval-Augmented Generation (RAG) combines language generation with real-time
 What is a hallucination?
  A hallucination in AI refers to when a model generates information that sounds plausible but is factually incorrect or unsupported by the training data.
 
-
-Closed source vs Open source LLMs
-
-Closed-source LLMs are proprietary, with code and models kept private, while open-source LLMs allow public access to the model architecture and often the training data, enabling more transparency and community-driven improvements.
 
 
 Prompt engineering
@@ -47,8 +50,25 @@ Ethical considerations
 Ethical issues in AI include data privacy, fairness, transparency, accountability, and the prevention of biases or harmful outputs, necessitating careful oversight and responsible model design.
 
 
+
+
 Who are important role models in the field of AI & ML?
 
 Chip Huyen: Writes  a cool blog  about ML and AI
 Timnit Gebru: An AI scientist that have many influential papers on AI ethics
 Andrej Karpathy: Research scientist on various influential roles in OpenAI, tesla, and more, keeps a very cool youtube channel explaining the fundamentals of large language models.
+
+
+
+Ethics quiz
+
+You are an AI developer working at a technology firm called Techscape. In order to make the recruitment process easier, the company has decided to develop an AI-based recruitment tool that automatically shortlists potential candidates based on their CVs. However, after putting it to use, it is discovered that the tool disproportionately selects men over women candidates.
+
+Who or what do you think is most responsible for this issue?
+No-one is responsible
+Dataset and ML algorithm Used
+Developer Who made the tool
+Dataset, ml algorithm and developer
+
+How would you proceed in this scenario?
+Answer:  Developer Who made the tool
