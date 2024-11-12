@@ -58,8 +58,6 @@ Chip Huyen: Writes  a cool blog  about ML and AI
 Timnit Gebru: An AI scientist that have many influential papers on AI ethics
 Andrej Karpathy: Research scientist on various influential roles in OpenAI, tesla, and more, keeps a very cool youtube channel explaining the fundamentals of large language models.
 
-
-
 Ethics quiz
 
 You are an AI developer working at a technology firm called Techscape. In order to make the recruitment process easier, the company has decided to develop an AI-based recruitment tool that automatically shortlists potential candidates based on their CVs. However, after putting it to use, it is discovered that the tool disproportionately selects men over women candidates.
