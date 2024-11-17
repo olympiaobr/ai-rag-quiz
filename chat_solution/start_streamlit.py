@@ -5,13 +5,6 @@ from embedding_model import EmbeddingModel
 from llm import LargeLanguageModel
 from rag import QuestionAnsweringRAG
 
-from dotenv import load_dotenv, find_dotenv
-
-
-# Initialize models and RAG
-env_file = find_dotenv()
-print(f"Loading environment variables from {env_file}")
-load_dotenv(env_file)
 # Initialize models and RAG
 embedding_model = EmbeddingModel()
 embedding_db = EmbeddingDatabase(embedding_model)
