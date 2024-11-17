@@ -1,4 +1,6 @@
-# 🚀 RAG Workshop: Build Your Own AI-Powered Q&A App!
+# 🚀 AI Launchpad: Building Solutions with LLMs and RAG
+
+## Build Your Own AI-Powered Q&A App
 Welcome to the RAG Workshop! This repository is your starting point to dive into the world of Retrieval-Augmented Generation (RAG). Whether you're curious about how RAG works, how to optimize it, or how to build cool AI-powered chat apps, you're in the right place!
 
 Please find the document that will serve as the content for the RAG app we are developing [here](https://docs.google.com/document/d/18MjmZZP2Hz6ADVNY3J0ln7NmS68h6BwiBqGaBqmhRCY/edit?tab=t.0#heading=h.u53uzo3gvfws).
@@ -16,7 +18,6 @@ While the workshop focuses on a Q&A application for educational content, the ski
 1. Create a [github](https://github.com/) account if you dont have one
 2. [Fork this repo](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo)
 3. [Open it in codespaces to develop!](https://docs.github.com/en/codespaces/getting-started/quickstart)
-
 
 ## Project Structure
 Here's what you'll find in this repository:
