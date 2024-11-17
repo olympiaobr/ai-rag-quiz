@@ -8,3 +8,7 @@ python-dotenv
 ipykernel
 fire
 ragas
+langchain_mistralai
+git+https://github.com/explodinggradients/ragas
+langchain-huggingface
+nltk

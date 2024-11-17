@@ -5,7 +5,7 @@ import numpy as np
 import pandas as pd
 
 from typing import List
-from embedding_model import EmbeddingModel
+from chat_solution.embedding_model import EmbeddingModel
 
 
 class EmbeddingDatabase:
