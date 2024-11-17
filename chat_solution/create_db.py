@@ -10,15 +10,19 @@ def create_text_chunks(text: str, chunk_size: int, overlap_size: int) -> list[st
     print(f"Created {len(chunks)} chunks of size {chunk_size} with overlap {overlap_size}")
     return chunks
 
-
-def create_db():
-    # Extract text from PDF and create chunks
+def create_text_chunks_from_workshop_data() -> list[str]:
     text = open("../data/data_example.md", "r").read()
-    text_chunks = create_text_chunks(text, chunk_size=700, overlap_size=200)
+    return create_text_chunks(text, chunk_size=700, overlap_size=200)
+
+
+def create_db() -> EmbeddingDatabase:
+    # Extract text from PDF and create chunks
 
     # Initialize embedding model and database
     model = EmbeddingModel()
     db = EmbeddingDatabase(model)
+
+    text_chunks = create_text_chunks_from_workshop_data()
 
     # Add text chunks to the database and save the state
     db.add_documents(text_chunks)
