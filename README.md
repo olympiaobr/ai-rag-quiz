@@ -25,28 +25,5 @@ Here's what you'll find in this repository:
 - 📓 notebooks: Step-by-step guides to get you up and running with RAG basics.
 - 💬 chat: The final chat application you'll build after completing the notebooks. 
 
-The final app could look like this:
-![](.github/demo.gif)
-
 ## Getting Started
-Ready to dive in? Check out this video tutorial for instructions on how to get started! 👇
-- (Link to video)
-
-
-## Additional Resources for self educaton
-
-
-## TODOs
-
-- [ ] Prepare notebooks
-    - [ ] Walkthrough in loading PDF and using it for prompting
-    - [ ] Walkthrough in embeddings and how to retrieve documents using cosine similarity
-- [ ] Prepare Chat Boilerplate
-    - [ ] Prepare code
-    - [ ] Add todos in sections which are used in the notebooks
-- [ ] Prepare video to get started
-    - [ ] How to fork
-    - [ ] How to setup MistralAI token (create account, add phone number, create token, add to GH secrets)
-    - [ ] How to start codespaces
-    - [ ] How to use notebooks in VS Code
-- [] Add images of final solution to repo
+Ready to dive in?
