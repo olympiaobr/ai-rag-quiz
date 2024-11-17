@@ -12,6 +12,11 @@ In this workshop, you will:
 
 While the workshop focuses on a Q&A application for educational content, the skills you'll gain are versatile and applicable to various scenarios, such as improving productivity of customer support by enabling querying policies or analysing customer reviews. RAG empowers language models by enriching them with domain-specific knowledge to tackle diverse tasks.
 
+## Instructions for the workskop
+1. Create a [github](https://github.com/) account if you dont have one
+2. [Fork this repo](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo)
+3. [Open it in codespaces to develop!](https://docs.github.com/en/codespaces/getting-started/quickstart)
+
 
 ## Project Structure
 Here's what you'll find in this repository:
