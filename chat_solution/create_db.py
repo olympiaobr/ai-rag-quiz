@@ -16,11 +16,7 @@ def create_text_chunks_from_workshop_data() -> list[str]:
 
 
 def create_db() -> EmbeddingDatabase:
-    # Extract text from PDF and create chunks
-
-    # Initialize embedding model and database
-    model = EmbeddingModel()
-    db = EmbeddingDatabase(model)
+    db = EmbeddingDatabase()
 
     text_chunks = create_text_chunks_from_workshop_data()
 

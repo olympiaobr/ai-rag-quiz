@@ -6,14 +6,17 @@ class QuizRag:
     def __init__(self):
         self.embedding_db = EmbeddingDatabase()
         self.llm = LargeLanguageModel()
+        self.documents_retrieved = []
 
     def query(self, query: str) -> str:
-        documents = self.embedding_db.retrieve(query)
-        print(f"Found {len(documents)} documents, first 500 characters: {documents[:500]}")
-        context = "\n".join(documents)
+        self.documents_retrieved = self.embedding_db.retrieve(query)
+        print(f"Found {len(self.documents_retrieved)} documents, first 500 characters: {self.documents_retrieved[:500]}")
+        context = "\n".join(self.documents_retrieved)
         prompt = self._create_prompt(context, query)
+        result = self.llm.call(prompt)
+        print(f"Result: {result}")
         
-        return self.llm.call(prompt)
+        return result
 
     def _create_prompt(self, context: str, message: str) -> str:
         chat_instructions = """"
