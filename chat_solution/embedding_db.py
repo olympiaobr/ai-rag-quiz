@@ -9,8 +9,8 @@ from chat_solution.embedding_model import EmbeddingModel
 
 
 class EmbeddingDatabase:
-    def __init__(self, embedding_model: EmbeddingModel):
-        self.embedding_model = embedding_model
+    def __init__(self):
+        self.embedding_model = EmbeddingModel()
         self.db = pd.DataFrame([], columns=["text", "text_embedding"])
 
         self.state_file = os.getenv("EMBEDDING_DB_HOME") or "/tmp/embedding_db.pkl"
