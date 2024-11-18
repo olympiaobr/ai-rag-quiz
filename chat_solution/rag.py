@@ -58,3 +58,4 @@ class LearningAssistant:
         except (json.JSONDecodeError, KeyError) as e:
             print(f"Error parsing response: {e}")
             return {}
+

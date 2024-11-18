@@ -11,6 +11,7 @@ embedding_db = EmbeddingDatabase(embedding_model)
 llm = LargeLanguageModel()
 rag = LearningAssistant(embedding_db, llm)
 
+
 # Streamlit app title
 st.title("LLM Workshop Quiz")
 

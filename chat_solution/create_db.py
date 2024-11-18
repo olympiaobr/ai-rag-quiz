@@ -1,6 +1,7 @@
 from embedding_model import EmbeddingModel
 from embedding_db import EmbeddingDatabase
 
+
 def create_text_chunks(text: str, chunk_size: int, overlap_size: int) -> list:
     """Create overlapping text chunks from the extracted text."""
     chunks = []
@@ -22,3 +23,4 @@ if __name__ == "__main__":
     db.add_documents(text_chunks)
     db.save_state()
     print("Database saved successfully")
+
