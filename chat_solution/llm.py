@@ -13,7 +13,7 @@ class LargeLanguageModel(object):
 
     def call(self, prompt):
         # Catch rate limit error and retry 2 times with exponential backoff
-        for attempt in range(1, 4):
+        for attempt in range(1, 3):
             try:
                 chat_response = self.client.chat.complete(
                     model=self.model,

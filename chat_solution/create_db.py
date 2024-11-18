@@ -1,5 +1,5 @@
-from embedding_model import EmbeddingModel
-from embedding_db import EmbeddingDatabase
+from chat_solution.embedding_db import EmbeddingDatabase
+from chat_solution.embedding_model import EmbeddingModel
 
 
 def create_text_chunks(text: str, chunk_size: int, overlap_size: int) -> list:
