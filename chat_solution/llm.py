@@ -4,12 +4,12 @@ from mistralai import Mistral
 class LargeLanguageModel(object):
     def __init__(self, model="mistral-small-latest"):
         self.model = model
-        api_key = os.environ.get("MISTRAL_API_KEY", None)
-        if api_key is None:
+        self._api_key = os.environ.get("MISTRAL_API_KEY", None)
+        if self._api_key is None:
             raise Exception(
                 f"`MISTRAL_API_KEY` is None. Please set it in your environment variables."
             )
-        self.client = Mistral(api_key=api_key)
+        self.client = Mistral(api_key=self._api_key)
 
     def call(self, prompt):
         # Catch rate limit error and retry 2 times with exponential backoff
@@ -36,5 +36,6 @@ class LargeLanguageModel(object):
                     print(f"Waiting {time_to_wait} seconds before retrying")
                     time.sleep(time_to_wait)
                 else:
+                    print(f"Api key: {self._api_key}")
                     raise e
         raise Exception("Rate limit exceeded after retries")
