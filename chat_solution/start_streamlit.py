@@ -13,16 +13,20 @@ rag = LearningAssistant(embedding_db, llm)
 
 # Streamlit app title
 st.title("LLM Workshop Quiz")
-st.write("This is a quiz to test your knowledge about LLMs. You will be asked questions and you can answer them by selecting the correct option from the list of answer choices.")
+st.write("""
+Guide this chatbot to answer questions about LLMs that are available in the context.
+Say something like "define LLM" or "how llms work", "ai ethics" ,etc
+""")
 
 # Initialize session state for quiz
 # add the messages to the session state
 if "messages" not in st.session_state:
     st.session_state.messages = []
 
+# append to the chat history and display the conversations  
 if prompt:= st.chat_input("Ask for a quiz question"):
-        st.write(f"User: {prompt}")
-        answer = rag.call_llm(prompt)
-        # remove any reference to the correct answer
-        answer = answer.replace("(CORRECT)", "")
-        st.write(answer)
+    st.write(f"User: {prompt}")
+    answer = rag.call_llm(prompt)
+    # remove any reference to the correct answer
+    answer = answer.replace("(CORRECT)", "")
+    st.write(answer)
