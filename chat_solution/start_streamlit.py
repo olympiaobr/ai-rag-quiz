@@ -7,7 +7,7 @@ from rag import LearningAssistant
 
 # Initialize models and RAG
 embedding_model = EmbeddingModel()
-embedding_db = EmbeddingDatabase(embedding_model)
+embedding_db = EmbeddingDatabase()  # Remove the embedding_model argument
 llm = LargeLanguageModel()
 rag = LearningAssistant(embedding_db, llm)
 
@@ -48,7 +48,7 @@ def evaluate_answer(user_answer):
 
 # User input for topic and number of questions
 st.session_state.quiz["topic"] = st.text_input("Enter the topic for the quiz:")
-st.session_state.quiz["num_questions"] = st.slider("Select the number of questions:", 1, 10, 1)
+st.session_state.quiz["num_questions"] = st.slider("Select the number of questions:", 1, 5, 1)
 
 if st.button("Start Quiz"):
     generate_question()

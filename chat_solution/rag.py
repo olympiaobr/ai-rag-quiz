@@ -34,7 +34,7 @@ class LearningAssistant:
         """
 
     def call_llm(self, topic: str) -> dict:
-        documents = self.embedding_db.retrieve_all()
+        documents = self.embedding_db.retrieve(topic)
         context = "\n".join(documents)
         prompt = self._create_question_prompt(context, topic)
         response = self.llm.call(prompt)
@@ -58,4 +58,13 @@ class LearningAssistant:
         except (json.JSONDecodeError, KeyError) as e:
             print(f"Error parsing response: {e}")
             return {}
+        
+        
+    def evaluate_answer(self, user_answer: str, correct_answer: str) -> str:
+        """Evaluate the user's answer and provide feedback."""
+        if user_answer == correct_answer:
+            return "Correct! Well done."
+        else:
+            return f"Incorrect. The correct answer is: {correct_answer}"   
+
 
