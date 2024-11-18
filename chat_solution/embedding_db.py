@@ -32,7 +32,7 @@ class EmbeddingDatabase:
         df = pd.DataFrame(data)
         self.db = pd.concat([self.db, df], ignore_index=True)
 
-    def retrieve(self, query: str, top_k: int = 70) -> List[str]:
+    def retrieve(self, query: str, top_k: int = 20) -> List[str]:
         """Retrieve the top_k most similar documents for the given query."""
         query_embedding = self.embedding_model.create_embedding(query)
         temp = self.db.copy()
