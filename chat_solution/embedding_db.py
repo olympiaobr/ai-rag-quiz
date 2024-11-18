@@ -32,7 +32,7 @@ class EmbeddingDatabase:
         df = pd.DataFrame(data)
         self.db = pd.concat([self.db, df], ignore_index=True)
 
-    def retrieve(self, query: str, top_k: int = 5) -> List[str]:
+    def retrieve(self, query: str, top_k: int = 20) -> List[str]:
         """Retrieve the top_k most similar documents for the given query."""
         query_embedding = self.embedding_model.create_embedding(query)
         temp = self.db.copy()
@@ -44,6 +44,7 @@ class EmbeddingDatabase:
 
         sorted_df = temp.sort_values("query_similarity", ascending=False)
         return list(sorted_df["text"][:top_k])
+
 
     def _compute_cosine_similarity(self, vec1: np.ndarray, vec2: np.ndarray) -> float:
         """Compute cosine similarity between two vectors."""
