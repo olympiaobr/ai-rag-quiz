@@ -15,7 +15,23 @@ class LearningAssistant:
         self.embedding_db = EmbeddingDatabase()  # Remove the embedding_model argument
         self.llm = LargeLanguageModel()
         self.conversation_history = []
+        self.documents_retrieved = []
         print("Quis assistant initialized")
+
+    def query(self, query: str) -> dict:
+        documents = None
+        # do not populate the context if the user input is a number as we are answering a previous question
+        # answer can come as a string number like "2", treat it as a number
+        if not query.isnumeric():
+            documents = self.embedding_db.retrieve(query)
+        self.documents_retrieved = documents
+
+        prompt = self._create_question_prompt(documents, query)
+        print(prompt)
+        response = self.llm.call(prompt)
+        self.conversation_history.append((query, response))
+
+        return response
 
     def _create_question_prompt(self, documents: str, query: str) -> str:
 
@@ -65,16 +81,3 @@ Just predict the next answer:
 Interaction {i+1} {new_context_str}
 User input: {query}
 Assistant:"""
-
-    def call_llm(self, query: str) -> dict:
-        documents = None
-        # do not populate the context if the user input is a number as we are answering a previous question
-        # answer can come as a string number like "2", treat it as a number
-        if not query.isnumeric():
-            documents = self.embedding_db.retrieve(query)
-        prompt = self._create_question_prompt(documents, query)
-        print(prompt)
-        response = self.llm.call(prompt)
-        self.conversation_history.append((query, response))
-
-        return response

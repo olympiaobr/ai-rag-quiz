@@ -32,7 +32,7 @@ if prompt:= st.chat_input("Ask for a quiz question"):
         st.markdown(prompt)
 
     # Generate and display assistant response
-    response = rag.call_llm(prompt)
+    response = rag.query(prompt)
     # remove any reference to the correct answer
     response = response.replace("(CORRECT)", "")
     st.session_state.messages.append({"role": "assistant", "content": response})
