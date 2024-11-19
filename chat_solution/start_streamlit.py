@@ -15,7 +15,7 @@ rag = LearningAssistant(embedding_db, llm)
 st.title("LLM Workshop Quiz")
 st.write("""
 Guide this chatbot to answer questions about LLMs that are available in the context.
-Say something like "define LLM" or "how llms work", "ai ethics" ,etc
+Say something like "LLMs" or "rag", "ai ethics", 'role models', ,etc
 """)
 
 # Initialize session state for quiz
