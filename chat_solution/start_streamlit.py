@@ -23,10 +23,25 @@ Say something like "LLMs" or "rag", "ai ethics", 'role models', ,etc
 if "messages" not in st.session_state:
     st.session_state.messages = []
 
+    # Display chat messages
+for message in st.session_state.messages:
+    with st.chat_message(message["role"]):
+        st.markdown(message["content"])
+
 # append to the chat history and display the conversations  
 if prompt:= st.chat_input("Ask for a quiz question"):
-    st.write(f"User: {prompt}")
-    answer = rag.call_llm(prompt)
+
+# Store user message
+    st.session_state.messages.append({"role": "user", "content": prompt})
+    
+    with st.chat_message("user"):
+        st.markdown(prompt)
+
+    # Generate and display assistant response
+    response = rag.call_llm(prompt)
     # remove any reference to the correct answer
-    answer = answer.replace("(CORRECT)", "")
-    st.write(answer)
+    response = response.replace("(CORRECT)", "")
+    st.session_state.messages.append({"role": "assistant", "content": response})
+    
+    with st.chat_message("assistant"):
+        st.markdown(response)
