@@ -1,31 +1,31 @@
 import streamlit as st
 
-from embedding_db import EmbeddingDatabase
-from embedding_model import EmbeddingModel
-from llm import LargeLanguageModel
-from rag import QuestionAnsweringRAG
+from rag import LearningAssistant
 
 # Initialize models and RAG
-embedding_model = EmbeddingModel()
-embedding_db = EmbeddingDatabase(embedding_model)
-llm = LargeLanguageModel()
-rag = QuestionAnsweringRAG(llm, embedding_db)
+rag = LearningAssistant.get_instance()
 
 # Streamlit app title
 st.title("LLM Workshop Quiz")
+st.write("""
+Guide this chatbot to answer questions about LLMs that are available in the context.
+Say something like "LLMs" or "rag", "ai ethics", 'role models', ,etc
+""")
 
-# Initialize session state for messages
+# Initialize session state for quiz
+# add the messages to the session state
 if "messages" not in st.session_state:
     st.session_state.messages = []
 
-# Display chat messages
+    # Display chat messages
 for message in st.session_state.messages:
     with st.chat_message(message["role"]):
         st.markdown(message["content"])
 
-# User input and response handling
-if prompt := st.chat_input("Type your question here..."):
-    # Store user message
+# append to the chat history and display the conversations  
+if prompt:= st.chat_input("Ask for a quiz question"):
+
+# Store user message
     st.session_state.messages.append({"role": "user", "content": prompt})
     
     with st.chat_message("user"):
@@ -33,6 +33,8 @@ if prompt := st.chat_input("Type your question here..."):
 
     # Generate and display assistant response
     response = rag.query(prompt)
+    # remove any reference to the correct answer
+    response = response.replace("(CORRECT)", "")
     st.session_state.messages.append({"role": "assistant", "content": response})
     
     with st.chat_message("assistant"):

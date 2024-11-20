@@ -1,32 +1,83 @@
-from embedding_db import EmbeddingDatabase
-from llm import LargeLanguageModel
+import json
 
+from chat_solution.embedding_db import EmbeddingDatabase
+from chat_solution.llm import LargeLanguageModel
 
-class QuestionAnsweringRAG:
-    def __init__(self, llm: LargeLanguageModel, embedding_db: EmbeddingDatabase):
-        self.llm = llm
-        self.embedding_db = embedding_db
+class LearningAssistant:
+    _instance = None
 
-    def _create_prompt(self, context: str, message: str) -> str:
-        chat_instructions = """"
-        You are a helpful assistant.
-        Respond questions with the context provided.
-        If you happen to  know the answer but its not in the context, respond with what you know but make it clear that it does not come from the context.
-        """
+    def get_instance():
+        if not LearningAssistant._instance:
+            LearningAssistant._instance = LearningAssistant()
+        return LearningAssistant._instance
+    
+    def __init__(self):
+        self.embedding_db = EmbeddingDatabase()  # Remove the embedding_model argument
+        self.llm = LargeLanguageModel()
+        self.conversation_history = []
+        self.documents_retrieved = []
+        print("Quis assistant initialized")
 
-        return f"""{chat_instructions}
+    def query(self, query: str) -> dict:
+        documents = None
+        # do not populate the context if the user input is a number as we are answering a previous question
+        # answer can come as a string number like "2", treat it as a number
+        if not query.isnumeric():
+            documents = self.embedding_db.retrieve(query)
+        self.documents_retrieved = documents
 
-        Answer the question only using the provided content.
+        prompt = self._create_question_prompt(documents, query)
+        print(prompt)
+        response = self.llm.call(prompt)
+        self.conversation_history.append((query, response))
 
-        Context: {context}
+        return response
+
+    def _create_question_prompt(self, documents: str, query: str) -> str:
+
+        chat_history = ""
+        i = 1
+        print(self.conversation_history)
+        for old_query, response in self.conversation_history:
+            chat_history += f"Interaction {i}\nUser: {old_query}\nAssistant: {response}\n"
+            i += 1
         
-        User Question: {message}
-        """
+        new_context_str = f"\nNew Context: {documents}" if documents else ""
 
-    def query(self, query: str) -> str:
-        documents = self.embedding_db.retrieve(query)
-        print(f"Found {len(documents)} documents, first 500 characters: {documents[:500]}")
-        context = "\n".join(documents)
-        prompt = self._create_prompt(context, query)
-        
-        return self.llm.call(prompt)
+        return f""" You are a helpful AI knowledge quiz chat assistant. Your goal is to test the knowledge of the users on the given topic."
+The user gives you a topic or a question and you should generate a new relevant quiz based on the context.
+- Generate a new relevant quiz question based on the context and the topic provided. The topic you select on the context does not need to be exactly the same, but should be related to the topic.
+- Your primary audience are students learning about AI. Do not use technical jargon that is not common knowledge or that you dont explain first.
+- The question should be relevant to the given topic and the answer should be found within the given context. If not say: "You did not equip me with the knowledge to answer this question."
+- Provide 4 answer choices for the question, one of which should be correct and the other three should be incorrect but plausible. Answer choices should be formulated clearly and concisely.
+- Mark the index of the correct answer in the answer choices list with the pattern (CORRECT) in the end
+if the user answers with a number, it is because they selected an answer to the previous question. In this case, you should evaluate if the answer is correct or not and provide feedback to the user.
+- Do not mention the context in your response.
+- Provide an explanation for previous question after the user selected an answer. The explanation should give the user additional context and help them better understand the topic.
+- Do not generate questions that are not about AI or ML.
+
+<startexample>
+Interaction 1
+New Context: LLMs are large language models that can generate responses to user queries. They are trained on massive datasets to learn patterns, structures, and relationships in text. They can generate responses by combining language generation with real-time data retrieval.
+User input: How do LLMs generate responses?
+Assistant:
+Question: How do LLMs generate responses?
+1. LLMs generate responses by searching the internet for relevant information. 
+2. LLMs generate responses by learning patterns, structures, and relationships in text from massive datasets. (CORRECT)
+3. LLMs generate responses by combining language generation with real-time data retrieval.
+4. LMs generate responses by using a predefined set of rules and templates.
+Interaction 2
+User input: 3
+Assistant:Incorrect! LLMs generate responses by learning patterns, structures, and relationships in text from massive datasets.
+Interaction 3
+User input: 2
+Assistant:Correct! LLMs generate responses by learning patterns, structures, and relationships in text from massive datasets.
+</endexample>
+
+Now we start the conversation history:
+{chat_history}
+
+Just predict the next answer:
+Interaction {i+1} {new_context_str}
+User input: {query}
+Assistant:"""
