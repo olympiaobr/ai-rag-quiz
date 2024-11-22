@@ -12,3 +12,5 @@ git+https://github.com/explodinggradients/ragas
 langchain-huggingface
 nltk
 rapidfuzz
+matplotlib
+einops
