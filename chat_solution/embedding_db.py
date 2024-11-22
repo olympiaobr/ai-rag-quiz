@@ -6,19 +6,25 @@ import pandas as pd
 
 from typing import List
 from chat_solution.embedding_model import EmbeddingModel
-
+import logging
 
 class EmbeddingDatabase:
+    """
+    This is a minimal (non scalable) implementation of a vector database. 
+    The vectors are stored in disk as pickled pandas dataframes.
+    Vector databases in real life are more complex and include more features, but for learning minimal is good.
+    """
+
     def __init__(self):
         self.embedding_model = EmbeddingModel()
         self.db = pd.DataFrame([], columns=["text", "text_embedding"])
 
         self.state_file = os.getenv("EMBEDDING_DB_HOME") or "/tmp/embedding_db.pkl"
         if os.path.exists(self.state_file):
-            print(f"Loading database from {self.state_file}")
+            logging.info(f"Loading database from {self.state_file}")
             self.load_state()
         else:
-            print(f"No database found at {self.state_file}")
+            logging.info(f"No database found at {self.state_file}")
 
     def add_documents(self, documents: List[str]):
         """Add documents to the embedding database."""
@@ -57,7 +63,7 @@ class EmbeddingDatabase:
         """Save the current state of the database to a file."""
         with open(self.state_file, "wb") as f:
             pickle.dump(self.db, f)
-        print(f"Database saved to {self.state_file}")
+        logging.info(f"Database saved to {self.state_file}")
 
     def load_state(self):
         """Load the database state from a file."""

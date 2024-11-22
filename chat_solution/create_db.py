@@ -23,7 +23,7 @@ def create_db() -> EmbeddingDatabase:
     # Add text chunks to the database and save the state
     db.add_documents(text_chunks)
     db.save_state()
-    print("Database saved successfully")
+    print("Documents added to the database successfully")
     return db
 
 

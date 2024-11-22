@@ -3,6 +3,10 @@ from mistralai import Mistral
 import logging
 
 class LargeLanguageModel(object):
+    """
+    A simple wrapper to call the Mistral LLM and do rate limiting.
+    There are libraries that deal with rate limiting out of the box like [lang-chain](https://github.com/hwchase17/langchain).
+    """
     def __init__(self, model="mistral-small-latest"):
         self.model = model
         self._api_key = os.environ.get("MISTRAL_API_KEY", None)
@@ -24,6 +28,7 @@ class LargeLanguageModel(object):
                             "content": prompt,
                         },
                     ],
+                    temperature=0.0
                 )
                 response_text = chat_response.choices[0].message.content
                 return response_text
