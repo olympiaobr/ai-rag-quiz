@@ -1,6 +1,7 @@
 import os
 from mistralai import Mistral
 import logging
+import time
 
 class LargeLanguageModel(object):
     """
@@ -36,12 +37,10 @@ class LargeLanguageModel(object):
                 
                 logging.error(f"Error happened while calling the model: {e}")
                 if "Status 429" in str(e) or "Rate limit exceeded" in str(e):
-                    logging.error(f"Rate limit error: {e}")
-                    import time
                     time_to_wait = 2 ** attempt
-                    logging.error(f"Waiting {time_to_wait} seconds before retrying")
+                    logging.warning(f"Rate limit error: {e}" + "Waiting {time_to_wait} seconds before retrying")
                     time.sleep(time_to_wait)
                 else:
-                    logging.error(f"Api key: {self._api_key}")
+                    logging.warning(f"Api key: {self._api_key}")
                     raise e
         raise Exception("Rate limit exceeded after retries")
