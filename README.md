@@ -22,9 +22,12 @@ While the workshop focuses on a Q&A application for educational content, the ski
 ## Project Structure
 Here's what you'll find in this repository:
 
-- 📂 data: All the datasets you need to work through the exercises. You can also use your own PDFs for a more personal touch!
 - 📓 notebooks: Step-by-step guides to get you up and running with RAG basics.
-- 💬 chat: The final chat application you'll build after completing the notebooks. 
+- 💬 chat_solution: The final chat application you'll build after completing the notebooks. 
+- 📂 data: All the datasets you need to work through the exercises. You can also use your own PDFs for a more personal touch!
+
+And tons of other configurations files that you do not need to worry about now.
 
 ## Getting Started
-Ready to dive in?
+
+Go to [notebook 1](notebooks/1-intro-llms-and-rag.ipynb) to get started.
