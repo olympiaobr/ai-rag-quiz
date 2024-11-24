@@ -19,6 +19,9 @@ While the workshop focuses on a Q&A application for educational content, the ski
 2. [Fork this repo](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo)
 3. [Open it in codespaces to develop!](https://docs.github.com/en/codespaces/getting-started/quickstart)
 
+### [Video instructions](https://drive.google.com/drive/folders/1RYrh7ZQKYj3XgFtD6tut2zjP5OdQ_5Ni?usp=sharing)
+We prepared some video tutorials so you can go fast to the code :)
+
 ## Project Structure
 Here's what you'll find in this repository:
 
