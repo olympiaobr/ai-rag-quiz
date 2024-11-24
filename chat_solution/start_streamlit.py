@@ -9,7 +9,7 @@ rag = LearningAssistant.get_instance()
 st.title("LLM Workshop Quiz")
 st.write("""
 Guide this chatbot to answer questions about LLMs that are available in the context.
-Say something like "LLMs" or "rag", "ai ethics", 'role models', ,etc
+Give a topic to the chat like "LLMs" or "rag", "chain of thought", "role models in ai", "ai ethics", etc
 """)
 
 # Initialize session state for quiz
