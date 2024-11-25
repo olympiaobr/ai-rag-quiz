@@ -24,8 +24,8 @@
                 "GitHub.copilot-chat"
 			],
 			"settings": {
-				"python.pythonPath": "/workspace/.venv/bin/python",
-				"python.defaultInterpreterPath": "/workspace/.venv/bin/python",
+				"python.pythonPath": "/workspace/.virtualenvironment/bin/python",
+				"python.defaultInterpreterPath": "/workspace/.virtualenvironment/bin/python",
 				"jupyter.jupyterServerType": "local",
                 "jupyter.kernelSpec": {
                     "default": "/usr/local/bin/python"
