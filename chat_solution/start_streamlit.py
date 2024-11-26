@@ -1,9 +1,9 @@
 import streamlit as st
 
-from rag import LearningAssistant
+from myrag import MyRAG
 
 # Initialize models and RAG
-rag = LearningAssistant.get_instance()
+rag = MyRAG.get_instance()
 
 # Streamlit app title
 st.title("LLM Workshop Quiz")
